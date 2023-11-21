@@ -2,7 +2,6 @@
 import { usePolyfire } from "polyfire-js/hooks";
 import { useState, useEffect } from "react";
 
-import { Chat as ChatType } from "polyfire-js";
 import { Loader } from "@/components/Loader";
 
 import ChatUI from "@polyfact/chat";
@@ -33,7 +32,7 @@ const Chat = () => {
   const [chat, setChat] = useState();
 
   useEffect(() => {
-    if (!chat) {
+    if (!chat && status === "authenticated") {
       setChat(new Chat({ autoMemory: true }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -55,13 +54,16 @@ const Chat = () => {
   }
 
   if (chat && status === "authenticated") {
-    /////////////////////////////////////////////////////
-    // ColorPickerWrapper is only used for the demo    //
-    // After you have chosen your colors,              //
-    // replace the defaultColors and delete this code  //
-    /////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
+    // Looking to easily tailor your chatbot's appearance?       //
+    // Simply set the following condition to true to activate    //
+    // the customization feature. This enables you to try out    //
+    // various color schemes with ease. After selecting your     //
+    // preferred colors, just update the defaultColors           //
+    // and delete this block of code.                            //
+    ///////////////////////////////////////////////////////////////
 
-    if (process.env.NODE_ENV !== "production") {
+    if (false) {
       return (
         <ColorPickerWrapper initialColors={defaultColors}>
           {({ colors }) => {
