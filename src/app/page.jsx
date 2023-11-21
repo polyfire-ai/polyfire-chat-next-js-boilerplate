@@ -67,7 +67,6 @@ const Chat = () => {
       return (
         <ColorPickerWrapper initialColors={defaultColors}>
           {({ colors }) => {
-            console.log("colorss", colors);
             return (
               <ChatUI
                 chat={chat}
