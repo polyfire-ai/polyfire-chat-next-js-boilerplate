@@ -6,7 +6,7 @@ import { Footer } from "@/components/Footer";
 
 import "./globals.css";
 
-const BOT_NAME = process.env.NEXT_PUBLIC_POLYFIRE_BOTNAME || "Chatbot";
+const PROJECT_NAME = process.env.NEXT_PUBLIC_POLYFIRE_BOTNAME || "Chatbot";
 
 export default function RootLayout({ children }) {
   return (
@@ -19,13 +19,13 @@ export default function RootLayout({ children }) {
           project={process.env.NEXT_PUBLIC_POLYFIRE_PROJECT || ""}
         >
           <Header
-            title={BOT_NAME}
+            title={PROJECT_NAME}
             logo="./logo.svg" // to replace with your own logo replace the logo.svg file in the public folder
-            bgColor="#2D3748"
+            bgColor="#0ea5e9"
             textColor="#E2E8F0"
           />
           <div className="content">{children}</div>
-          <Footer name={BOT_NAME} bgColor="#2D3748" textColor="#E2E8F0" />
+          <Footer name={PROJECT_NAME} bgColor="#0ea5e9" textColor="#E2E8F0" />
         </PolyfireProvider>
       </body>
     </html>

@@ -9,7 +9,6 @@ const StyledHeader = styled.header`
   justify-content: center;
   background-color: ${(props) => props.$bgColor || "#1a1a2e"};
   color: ${(props) => props.$textColor || "#e94560"};
-  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.2);
 `;
 
 const HeaderContainer = styled.div`

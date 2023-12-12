@@ -7,7 +7,7 @@ import { Loader } from "@/components/Loader";
 import ChatUI from "@polyfact/chat";
 import ColorPickerWrapper from "@/components/Colors";
 
-const BOT_NAME = process.env.NEXT_PUBLIC_POLYFIRE_BOTNAME || "Chatbot";
+const PROJECT_NAME = process.env.NEXT_PUBLIC_POLYFIRE_BOTNAME || "Chatbot";
 
 const defaultColors = {
   chatBackgroundColor: "rgba(111, 111, 111, 0.1)",
@@ -70,7 +70,7 @@ const Chat = () => {
             return (
               <ChatUI
                 chat={chat}
-                botName={BOT_NAME}
+                botName={PROJECT_NAME}
                 buttonBorderWidth="1px"
                 {...colors}
               />
@@ -84,7 +84,7 @@ const Chat = () => {
     return (
       <ChatUI
         chat={chat}
-        botName={BOT_NAME}
+        botName={PROJECT_NAME}
         buttonBorderWidth="1px"
         {...defaultColors}
       />
