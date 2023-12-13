@@ -2,7 +2,6 @@
 
 import { PolyfireProvider } from "polyfire-js/hooks";
 import { Header } from "@/components/Header";
-import { Footer } from "@/components/Footer";
 
 import "./globals.css";
 
@@ -13,7 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <head />
 
-      <body className="app-container">
+      <body className="app-container h-screen">
         <PolyfireProvider
           // Need to add the project alias in the .env file
           project={process.env.NEXT_PUBLIC_POLYFIRE_PROJECT || ""}
@@ -21,11 +20,10 @@ export default function RootLayout({ children }) {
           <Header
             title={PROJECT_NAME}
             logo="./logo.svg" // to replace with your own logo replace the logo.svg file in the public folder
-            bgColor="#0ea5e9"
+            bgColor="#1e40af"
             textColor="#E2E8F0"
           />
-          <div className="content">{children}</div>
-          <Footer name={PROJECT_NAME} bgColor="#0ea5e9" textColor="#E2E8F0" />
+          <div className="content h-full">{children}</div>
         </PolyfireProvider>
       </body>
     </html>

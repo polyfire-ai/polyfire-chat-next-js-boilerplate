@@ -6,6 +6,8 @@ import { Loader } from "@/components/Loader";
 
 import ChatUI from "@polyfact/chat";
 import ColorPickerWrapper from "@/components/Colors";
+import LoginUI from "@/components/Auth/LoginUI";
+import Forum from "@/components/Forum";
 
 const PROJECT_NAME = process.env.NEXT_PUBLIC_POLYFIRE_BOTNAME || "Chatbot";
 
@@ -32,6 +34,7 @@ const Chat = () => {
   const [chat, setChat] = useState();
 
   useEffect(() => {
+    return;
     if (!chat && status === "authenticated") {
       setChat(new Chat({ autoMemory: true }));
     }
@@ -39,56 +42,25 @@ const Chat = () => {
   }, [status]);
 
   if (login && status === "unauthenticated") {
-    return (
-      <button
-        onClick={() => login({ provider: "github" })}
-        className="login-btn"
-      >
-        Login with Github
-      </button>
-    );
+    return <LoginUI />;
   }
 
   if (status === "loading") {
     return <Loader />;
   }
 
+  if (status === "authenticated") {
+    return <Forum />;
+  }
+
   if (chat && status === "authenticated") {
-    ///////////////////////////////////////////////////////////////
-    // Looking to easily tailor your chatbot's appearance?       //
-    // Simply set the following condition to true to activate    //
-    // the customization feature. This enables you to try out    //
-    // various color schemes with ease. After selecting your     //
-    // preferred colors, just update the defaultColors           //
-    // and delete this block of code.                            //
-    ///////////////////////////////////////////////////////////////
-
-    if (false) {
-      return (
-        <ColorPickerWrapper initialColors={defaultColors}>
-          {({ colors }) => {
-            return (
-              <ChatUI
-                chat={chat}
-                botName={PROJECT_NAME}
-                buttonBorderWidth="1px"
-                {...colors}
-              />
-            );
-          }}
-        </ColorPickerWrapper>
-      );
-    }
-    ////////////////////////////////////////////////
-
-    return (
-      <ChatUI
+    return undefined;
+    /* <ChatUI
         chat={chat}
         botName={PROJECT_NAME}
         buttonBorderWidth="1px"
         {...defaultColors}
-      />
-    );
+      /> */
   }
 
   return null;
