@@ -3,7 +3,7 @@ export default function Head() {
     <>
       <title>My First Chatbot</title>
       <meta content="width=device-width, initial-scale=1" name="viewport" />
-      <meta name="description" content="Chatbot using polyfire-js sdk" />
+      <meta name="description" content="depressedfounders.com" />
       <link rel="icon" href="/favicon.ico" />
     </>
   );

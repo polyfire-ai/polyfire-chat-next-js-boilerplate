@@ -20,10 +20,8 @@ export default function RootLayout({ children }) {
           <Header
             title={PROJECT_NAME}
             logo="./logo.svg" // to replace with your own logo replace the logo.svg file in the public folder
-            bgColor="#1e40af"
-            textColor="#E2E8F0"
           />
-          <div className="content h-full">{children}</div>
+          <div className="content h-full pt-16">{children}</div>
         </PolyfireProvider>
       </body>
     </html>

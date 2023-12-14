@@ -34,48 +34,20 @@ function Icon(props) {
 
 export default Icon;
 
-const StyledHeader = styled.header`
-  display: flex;
-  height: 80px;
-  align-items: center;
-  justify-content: center;
-  background-color: ${(props) => props.$bgColor || "#1a1a2e"};
-  color: ${(props) => props.$textColor || "#e94560"};
-`;
-
-const HeaderContainer = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  max-width: 1440px;
-  width: 100%;
-  padding: 0 2rem;
-`;
-
-const LogoContainer = styled.div`
-  display: flex;
-  align-items: center;
-
-  & > h1 {
-    font-weight: 700;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    margin-left: 1rem;
-  }
-`;
-
-export function Header({ title, bgColor, textColor, logo = "./logo.svg" }) {
+export function Header() {
   return (
-    <StyledHeader $bgColor={bgColor} $textColor={textColor}>
-      <HeaderContainer>
-        <div className="flex justify-between w-full">
-          <LogoContainer>
-            <Icon width={42} height={42} />
-            <h1 className="italic">depressedfounders.com</h1>
-          </LogoContainer>
+    <div className="fixed top-0 z-10 bg-gray-50 flex items-center justify-between w-full text-blue-500 border-b border-gray-200">
+      <div className="flex justify-between w-full mx-auto max-w-screen-2xl px-8 h-16 text-lg">
+        <div className="flex items-center">
+          <Icon width={30} height={30} />
+          <h1 className="italic tracking-widest ml-4 font-semibold">
+            depressedfounders.com
+          </h1>
+        </div>
+        <div className="hidden sm:flex text-sm items-center justify-center">
           <LoginUI />
         </div>
-      </HeaderContainer>
-    </StyledHeader>
+      </div>
+    </div>
   );
 }

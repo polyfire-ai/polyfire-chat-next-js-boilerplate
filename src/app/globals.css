@@ -5,7 +5,7 @@
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #dbeafe;
+  background: rgb(249 250 251);
 }
 
 .app-container {

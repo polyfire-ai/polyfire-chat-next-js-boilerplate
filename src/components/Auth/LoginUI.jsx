@@ -4,19 +4,27 @@ import { usePolyfire } from "polyfire-js/hooks";
 import { useEffect, useState } from "react";
 import { firebaseLogin } from "utils/firebase.js";
 import "./LoginUI.css";
+import useFirebase from "hooks/useFirebase";
 
-export default function LoginUI() {
+export default function LoginUI({ showLogin, setShowLogin }) {
   const {
     auth: { login, logout, status, user },
   } = usePolyfire();
-  const [isModal, setIsModal] = useState(false);
+  const { user: firebaseUser } = useFirebase();
+  const [isModal, setIsModal] = useState(showLogin || false);
 
   useEffect(() => {
-    if (status === "authenticated") {
+    if (status === "authenticated" && !firebaseUser?.currentUser) {
       setIsModal(false);
       user.getAuthID().then(firebaseLogin);
     }
-  }, [status, user]);
+  }, [status, user, firebaseUser]);
+
+  useEffect(() => {
+    if (showLogin && isModal === false) {
+      setShowLogin(false);
+    }
+  }, [isModal]);
 
   return (
     <>
@@ -25,10 +33,10 @@ export default function LoginUI() {
         <div className="flex items-center justify-center">
           {isModal ? (
             <div
-              className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-blue-500/50"
+              className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-blue-500/50 z-50"
               onClick={() => setIsModal(false)}
             >
-              <div className="flex justify-center items-center w-10/12 h-5/6 sm:w-1/3 sm:h-1/3 bg-blue-500 rounded-xl">
+              <div className="flex justify-center items-center w-10/12 h-5/6 sm:w-1/3 sm:h-1/3  rounded-xl">
                 <div className="flex flex-col justify-center items-center">
                   <button
                     className="gsi-material-button"
@@ -87,7 +95,7 @@ export default function LoginUI() {
                 </div>
               </div>
             </div>
-          ) : (
+          ) : showLogin !== undefined ? null : (
             <button
               className="hover:text-blue-300 hover:underline"
               onClick={() => setIsModal(true)}
@@ -97,9 +105,9 @@ export default function LoginUI() {
           )}
         </div>
       )}
-      {status === "authenticated" && (
+      {status === "authenticated" && showLogin === undefined && (
         <button
-          className="hover:text-blue-300 hover:underline"
+          className="hover:text-blue-300 hover:underline font-semibold"
           onClick={() => logout()}
         >
           Log out

@@ -162,7 +162,6 @@ const ColorPickerWrapper = ({ children, initialColors }) => {
             x
           </button>
           {Object.keys(colors).map((key) => {
-            console.log("key", key);
             return renderColorPicker(key.replace(/([A-Z])/g, " $1"), key);
           })}
           <button

@@ -46,9 +46,9 @@ export function postMessage(message) {
 
   if (user) {
     addDoc(collection(db, "messages"), {
-      message: message,
+      ...message,
       timestamp: new Date(),
-      user: user,
+      userID: user,
     });
   }
 }
